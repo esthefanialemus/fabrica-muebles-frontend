@@ -1,0 +1,37 @@
+<p class="text-center">Lista de Clientes</p>
+
+<div class="container">
+  <div class="card">
+
+      <div class="card-header">
+          <h3>{{"Clientes"}}</h3>
+      </div>
+      <div class="card-body">
+          <table class="table table-hover">
+              <thead>
+                  <tr class="text-center">
+                      <th>{{"ID_CLIENTE"}}</th>
+                      <th>{{"NOMBRE"}}</th>
+                      <th>{{"APELLIDO"}}</th>
+                      <th>{{"IDENTIFICACION"}}</th>
+                      <th>{{"EMAIL"}}</th>
+                      <th>{{"ACCIÓN"}}</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let cliente of listaClientes | async" class="text-center">
+                      <td>{{cliente.id}}</td>
+                      <td>{{cliente.nombre}}</td>
+                      <td>{{cliente.apellido}}</td>
+                      <td>{{cliente.identificacion}}</td>
+                      <td>{{cliente.email}}</td>
+                      <td> <button type="submit" class="btn btn-success" [routerLink]="['/compra',cliente.id]">Seleccionar</button></td>
+
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+  </div>
+
+</div>
+

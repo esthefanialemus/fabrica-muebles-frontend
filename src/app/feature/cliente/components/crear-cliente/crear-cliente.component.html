@@ -1,0 +1,55 @@
+<div class="container">
+  <h1>Registrar Producto</h1>
+
+  <form [formGroup]="clienteForm" (ngSubmit)="crear()">
+
+    <div class="row">
+      <div class="col-sm-2">
+        <label>Nombre:</label>
+      </div>
+      <div class="col-sm-4">
+        <input validar type="text" id="NombreCliente" name="NombreCliente" placeholder="Nombre Cliente" class="form-control"
+        formControlName="nombre">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-2">
+        <label>Apellido:</label>
+      </div>
+      <div class="col-sm-4">
+        <input validar type="text" id="ApellidoCliente" name="ApellidoCliente" placeholder="Apellido Cliente" class="form-control"
+        formControlName="apellido">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-2">
+        <label>Identificacion:</label>
+      </div>
+      <div class="col-sm-4">
+        <input validar type="text" id="IdentificacionCliente" name="IdentificacionCliente" placeholder="Identificacion Cliente" class="form-control"
+        formControlName="identificacion">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-2">
+        <label>Email:</label>
+      </div>
+      <div class="col-sm-4">
+        <input validar type="text" id="EmailCliente" name="EmailCliente" placeholder="Email Cliente" class="form-control"
+        formControlName="email">
+      </div>
+    </div>
+
+
+
+
+    <button type="submit" class="btn btn-success">Agregar</button>
+  </form>
+
+
+
+
+</div>

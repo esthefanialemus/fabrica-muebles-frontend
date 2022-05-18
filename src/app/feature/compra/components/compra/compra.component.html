@@ -1,0 +1,46 @@
+<nav >
+  <div class="d-flex  flex-row-reverse">
+
+   <div class="d-flex">
+    <a  class="text-center" class="nav-link" [routerLink]="['/itemsCompra',idCliente]"  (click)="enviarLista()" routerLinkActive="active" >   Ver items de compra</a>
+
+    <button type="submit" class="btn btn-info">  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+      <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+    </svg> </button>
+
+   </div>
+   </div>
+ </nav>
+
+
+ <div class="container">
+ <div class="card">
+
+  <div class="card-header">
+      <h3>{{"Selecciona el producto que desees"}}</h3>
+  </div>
+  <div class="card-body">
+      <table class="table table-hover">
+          <thead>
+              <tr class="text-center">
+
+                  <th>{{"VALOR"}}</th>
+                  <th>{{"TIPO COMEDOR"}}</th>
+                  <th>{{"NUMERO DE COMEDOR"}}</th>
+                  <th>{{"AÑADIR"}}</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let producto of listaProductos | async" class="text-center">
+
+                  <td>{{producto.valor}}</td>
+                  <td>{{producto.tipoComedor}}</td>
+                  <td>{{producto.numeroPuesto}}</td>
+                  <td> <button type="submit" class="btn btn-success" (click)="agregarAlCarrito(producto)">Agregar</button></td>
+              </tr>
+          </tbody>
+      </table>
+  </div>
+</div>
+ </div>
+ <router-outlet></router-outlet>

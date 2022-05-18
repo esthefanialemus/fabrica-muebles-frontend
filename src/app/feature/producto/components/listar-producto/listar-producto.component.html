@@ -1,0 +1,31 @@
+<p class="text-center">Lista de productos</p>
+
+<div class="container">
+  <div class="card">
+
+      <div class="card-header">
+          <h3>{{"PRODUCTOS"}}</h3>
+      </div>
+      <div class="card-body">
+          <table class="table table-hover">
+              <thead>
+                  <tr class="text-center">
+                      <th>{{"ID_PRODUCTO"}}</th>
+                      <th>{{"VALOR"}}</th>
+                      <th>{{"TIPO COMEDOR"}}</th>
+                      <th>{{"NUMERO DE COMEDOR"}}</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let item of listaProductos | async" class="text-center">
+                      <td>{{item.id}}</td>
+                      <td>{{item.valor}}</td>
+                      <td>{{item.tipoComedor}}</td>
+                      <td>{{item.numeroPuesto}}</td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+  </div>
+
+</div>
