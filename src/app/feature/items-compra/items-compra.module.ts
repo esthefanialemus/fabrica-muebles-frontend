@@ -8,6 +8,7 @@ import { CrearItemsCompraComponent } from './components/crear-items-compra/crear
 import { ListarItemsCompraComponent } from './components/listar-items-compra/listar-items-compra.component';
 import { BorrarItemsCompraComponent } from './components/borrar-items-compra/borrar-items-compra.component';
 import { SharedModule } from '@shared/shared.module';
+import { CompraService } from '../compra/shared/service/compra.service';
 
 
 @NgModule({
@@ -23,7 +24,7 @@ import { SharedModule } from '@shared/shared.module';
     SharedModule
   ],
   providers:[
-    ItemsCompraService
+    ItemsCompraService,CompraService
   ]
 })
 export class ItemsCompraModule { }

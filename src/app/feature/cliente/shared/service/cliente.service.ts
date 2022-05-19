@@ -15,7 +15,6 @@ export class ClienteService {
    }
 
    public guardar(cliente: Cliente) {
-     console.log(cliente);
 
      return this.http.doPost<Cliente, boolean>(`${environment.endpoint}/cliente`, cliente,
                                                  this.http.optsName('crear/actualizar clientes'));

@@ -14,21 +14,20 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let viajesconductor of listaCompra">
-                <td>{{viajesconductor.valor}}</td>
-
-
+              <tr *ngFor="let producto of productos">
+                <td>{{producto.tipoComedor}}</td>
+                <td>{{producto.valor}}</td>
               </tr>
             </tbody>
           </table>
         </div>
       </div>
+      <div class="card-footer text-center">
+        <p><strong>Total apagar: {{totalPagar | currency}} </strong></p>
+      </div>
       <div class="card-footer">
-        <a class="btn btn-success my-2" [routerLink]="['/reserva/crear']" id="linkCrearReserva">Agregar</a>
+        <a class="btn btn-success my-2" (click)="guardarItemCompra()" id="linkCrearReserva">Pagar</a>
       </div>
     </div>
   </div>
 </div>
-<ul *ngFor="let viajesconductor of listaCompra" >
-  <li>{{viajesconductor.valor}}</li>
-</ul>

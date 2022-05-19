@@ -8,4 +8,8 @@ export class NavbarPage {
         await this.linkProducto.click();
         await this.linkCliente.click();
     }
+    async clickBotonClientes() {
+      await this.linkProducto.click();
+      await this.linkCliente.click();
+  }
 }

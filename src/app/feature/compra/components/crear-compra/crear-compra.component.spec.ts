@@ -1,61 +1,42 @@
-import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
-import { of } from 'rxjs';
+import { CompraService } from './../../shared/service/compra.service';
+import { Compra } from './../../shared/model/compra';
 
-import { CrearProductoComponent } from './crear-producto.component';
-import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
-import { RouterTestingModule } from '@angular/router/testing';
-import { ProductoService } from '../../shared/service/producto.service';
+import { HttpTestingController, HttpClientTestingModule } from '@angular/common/http/testing';
+import {  TestBed } from '@angular/core/testing';
+import { environment } from 'src/environments/environment';
 import { HttpService } from 'src/app/core/services/http.service';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { HttpResponse } from '@angular/common/http';
 
-describe('CrearProductoComponent', () => {
-  let component: CrearProductoComponent;
-  let fixture: ComponentFixture<CrearProductoComponent>;
-  let productoService: ProductoService;
+describe('CrearCompraComponent', () => {
+  let httpMock: HttpTestingController;
+  let service: CompraService;
+  const apiEndpointCompra = `${environment.endpoint}/compra`;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [ CrearProductoComponent ],
-      imports: [
-        CommonModule,
-        HttpClientModule,
-        RouterTestingModule,
-        ReactiveFormsModule,
-        FormsModule
-      ],
-      providers: [ProductoService, HttpService],
-    })
-    .compileComponents();
-  }));
+
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CrearProductoComponent);
-    component = fixture.componentInstance;
-    productoService = TestBed.inject(ProductoService);
-    spyOn(productoService, 'guardar').and.returnValue(
-      of(true)
-    );
-    fixture.detectChanges();
+    const injector = TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      providers: [CompraService, HttpService]
+    });
+    httpMock = injector.inject(HttpTestingController);
+    service = TestBed.inject(CompraService);
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    const crearCompra: CompraService = TestBed.inject(CompraService);
+    expect(crearCompra).toBeTruthy();
   });
 
-  it('formulario es invalido cuando esta vacio', () => {
-    expect(component.productoForm.valid).toBeFalsy();
-  });
 
-  it('Registrando producto', () => {
-    expect(component.productoForm.valid).toBeFalsy();
-    component.productoForm.controls.id.setValue('001');
-    component.productoForm.controls.descripcion.setValue('Producto test');
-    expect(component.productoForm.valid).toBeTruthy();
-
-    component.crear();
-
-    // Aca validamos el resultado esperado al enviar la petición
-    // TODO adicionar expect
+  it('deberia crear una compra', () => {
+    const dummyCompra = new Compra(1,900000,'2022-05-16T10:12:43.411','2022-05-19T10:12:43.411','2022-05-22T10:12:43.411');
+    service.guardar(dummyCompra).subscribe((respuesta) => {
+      expect(respuesta).toBeTruthy();
+    });
+    const req = httpMock.expectOne(apiEndpointCompra);
+    expect(req.request.method).toBe('POST');
+    req.event(new HttpResponse<boolean>({body: true}));
   });
 });
+

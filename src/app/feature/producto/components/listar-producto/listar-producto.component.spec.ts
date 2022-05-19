@@ -1,51 +1,42 @@
-import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
-import { of } from 'rxjs';
+import { HttpService } from './../../../../core/services/http.service';
+import { TestBed } from '@angular/core/testing';
+import { HttpTestingController, HttpClientTestingModule } from '@angular/common/http/testing';
+import { ProductoService } from './../../shared/service/producto.service';
+import { HttpResponse } from '@angular/common/http';
 
-import { ListarProductoComponent } from './listar-producto.component';
-import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
-import { RouterTestingModule } from '@angular/router/testing';
-import { ProductoService } from '../../shared/service/producto.service';
-import { Producto } from '../../shared/model/producto';
-import { HttpService } from 'src/app/core/services/http.service';
+import { environment } from 'src/environments/environment';
+
+
 
 describe('ListarProductoComponent', () => {
-  let component: ListarProductoComponent;
-  let fixture: ComponentFixture<ListarProductoComponent>;
-  let productoService: ProductoService;
-  const listaProductos: Producto[] = [
-  //  new Producto('1', 'Producto 1'), new Producto('2', 'Producto 2')
+  let httpMock: HttpTestingController;
+  let service: ProductoService;
+  const apiEndpointProductoConsulta = `${environment.endpoint}/producto`;
 
-  ];
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [ListarProductoComponent],
-      imports: [
-        CommonModule,
-        HttpClientModule,
-        RouterTestingModule
-      ],
-      providers: [ProductoService, HttpService]
-    })
-      .compileComponents();
-  }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ListarProductoComponent);
-    component = fixture.componentInstance;
-    productoService = TestBed.inject(ProductoService);
-    spyOn(productoService, 'consultar').and.returnValue(
-      of(listaProductos)
-    );
-    fixture.detectChanges();
+    const injector = TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      providers: [ProductoService, HttpService]
+    });
+    httpMock = injector.inject(HttpTestingController);
+    service = TestBed.inject(ProductoService);
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
-    component.listaProductos.subscribe(resultado => {
-      expect(2).toBe(resultado.length);
+    const listarCliente: ProductoService = TestBed.inject(ProductoService);
+    expect(listarCliente).toBeTruthy();
+  });
+
+  fit('deberia listar productos', () => {
+    service.consultar().subscribe((respuesta) => {
+      expect(respuesta).toBeTruthy();
+    });
+    const req = httpMock.expectOne(apiEndpointProductoConsulta);
+    expect(req.request.method).toBe('GET');
+    req.event(new HttpResponse<boolean>({body: true}));
   });
 });
 
-});
+

@@ -1,25 +1,38 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { ListarClienteComponent } from './listar-cliente.component';
+import { ClienteService } from './../../shared/service/cliente.service';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import {  TestBed } from '@angular/core/testing';
+import { environment } from 'src/environments/environment';
+import { HttpService } from '@core/services/http.service';
+import { HttpResponse } from '@angular/common/http';
 
 describe('ListarClienteComponent', () => {
-  let component: ListarClienteComponent;
-  let fixture: ComponentFixture<ListarClienteComponent>;
+  let httpMock: HttpTestingController;
+  let service: ClienteService;
+  const apiEndpointClienteConsulta = `${environment.endpoint}/cliente`;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ ListarClienteComponent ]
-    })
-    .compileComponents();
-  });
+
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ListarClienteComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    const injector = TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      providers: [ClienteService, HttpService]
+    });
+    httpMock = injector.inject(HttpTestingController);
+    service = TestBed.inject(ClienteService);
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    const listarCliente: ClienteService = TestBed.inject(ClienteService);
+    expect(listarCliente).toBeTruthy();
+  });
+
+
+  fit('deberia listar un cliente', () => {
+    service.consultar().subscribe((respuesta) => {
+      expect(respuesta).toBeTruthy();
+    });
+    const req = httpMock.expectOne(apiEndpointClienteConsulta);
+    expect(req.request.method).toBe('GET');
+    req.event(new HttpResponse<boolean>({body: true}));
   });
 });

@@ -1,20 +1,17 @@
+import { Producto } from './../../../producto/shared/model/producto';
 import { Injectable } from '@angular/core';
-import { HttpService } from '@core-service/http.service';
-import { Subject } from 'rxjs';
-import { Compra } from 'src/app/feature/compra/shared/model/compra';
 
 @Injectable()
 export class CarritoService {
 
-  private listaCompra = new Subject<Compra[]>();
-  constructor(protected http: HttpService) {}
+  constructor() {}
 
-  getlistaCompra() {
-    return this.listaCompra.asObservable();
+  public obtenerCambioProducto() : any {
+    const productos = localStorage.getItem('data');
+    return productos;
   }
 
-  setlistaCompra(lista: Compra[]) {
-    this.listaCompra.next(lista);
+  public enviarCambioProducto(lista: Producto[]) {
+    localStorage.setItem('data', JSON.stringify(lista));
   }
-
 }

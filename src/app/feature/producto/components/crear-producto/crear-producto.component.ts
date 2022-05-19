@@ -28,47 +28,48 @@ export class CrearProductoComponent implements OnInit {
 
 onChange() {
 
-  if(this.productoForm.value.tipoComedor==1 && this.productoForm.value.numeroPuesto==1  ){
+
+  if(this.productoForm.value.tipoComedor=='Vidrio' && this.productoForm.value.numeroPuesto=='4 Puestos'  ){
     this.productoForm.setValue({...this.productoForm.value,valor:400000});
     console.log( this.productoForm.value);
   }
 
-  if(this.productoForm.value.tipoComedor==1 && this.productoForm.value.numeroPuesto==2  ){
+  if(this.productoForm.value.tipoComedor=='Vidrio' && this.productoForm.value.numeroPuesto=='6 Puestos'  ){
     this.productoForm.setValue({...this.productoForm.value,valor:600000});
     console.log( this.productoForm.value);
   }
 
-  if(this.productoForm.value.tipoComedor==1 && this.productoForm.value.numeroPuesto==3  ){
+  if(this.productoForm.value.tipoComedor=='Vidrio' && this.productoForm.value.numeroPuesto=='8 Puestos'  ){
     this.productoForm.setValue({...this.productoForm.value,valor:900000});
     console.log( this.productoForm.value);
   }
 
-  if(this.productoForm.value.tipoComedor==2 && this.productoForm.value.numeroPuesto==1  ){
+  if(this.productoForm.value.tipoComedor=='Madera' && this.productoForm.value.numeroPuesto=='4 Puestos'  ){
     this.productoForm.setValue({...this.productoForm.value,valor:900000});
     console.log( this.productoForm.value);
   }
 
-  if(this.productoForm.value.tipoComedor==2 && this.productoForm.value.numeroPuesto==2  ){
+  if(this.productoForm.value.tipoComedor=='Madera' && this.productoForm.value.numeroPuesto=='6 Puestos'  ){
     this.productoForm.setValue({...this.productoForm.value,valor:1200000});
     console.log( this.productoForm.value);
   }
 
-  if(this.productoForm.value.tipoComedor==2 && this.productoForm.value.numeroPuesto==3  ){
+  if(this.productoForm.value.tipoComedor=='Madera' && this.productoForm.value.numeroPuesto=='8 Puestos'  ){
     this.productoForm.setValue({...this.productoForm.value,valor:2400000});
     console.log( this.productoForm.value);
   }
 
-  if(this.productoForm.value.tipoComedor==3 && this.productoForm.value.numeroPuesto==1  ){
+  if(this.productoForm.value.tipoComedor=='Tapizado' && this.productoForm.value.numeroPuesto=='4 Puestos'  ){
     this.productoForm.setValue({...this.productoForm.value,valor:800000});
     console.log( this.productoForm.value);
   }
 
-  if(this.productoForm.value.tipoComedor==3 && this.productoForm.value.numeroPuesto==2  ){
+  if(this.productoForm.value.tipoComedor=='Tapizado' && this.productoForm.value.numeroPuesto=='6 Puestos'  ){
     this.productoForm.setValue({...this.productoForm.value,valor:150000});
     console.log( this.productoForm.value);
   }
 
-  if(this.productoForm.value.tipoComedor==3 && this.productoForm.value.numeroPuesto==3  ){
+  if(this.productoForm.value.tipoComedor=='Tapizado' && this.productoForm.value.numeroPuesto=='8 Puestos'  ){
     this.productoForm.setValue({...this.productoForm.value,valor:290000});
     console.log( this.productoForm.value);
   }
