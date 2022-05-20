@@ -1,38 +1,56 @@
-import { Cliente } from './../../shared/model/cliente';
+import { of } from 'rxjs';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
+import { Router } from '@angular/router';
 import { ClienteService } from './../../shared/service/cliente.service';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { CrearClienteComponent } from './crear-cliente.component';
 
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { HttpService } from '@core/services/http.service';
-import { environment } from 'src/environments/environment';
-import { TestBed } from '@angular/core/testing';
-import { HttpResponse } from '@angular/common/http';
+import { TestBed,ComponentFixture } from '@angular/core/testing';
+import { CommonModule } from '@angular/common';
 
 describe('CrearClienteComponent', () => {
-  let httpMock: HttpTestingController;
-  let service: ClienteService;
-  const apiEndpointCliente = `${environment.endpoint}/cliente`;
+  let componentCliente: CrearClienteComponent;
+  let fixture: ComponentFixture<CrearClienteComponent>;
+  let clienteService: ClienteService;
+  let router: Router;
+
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [ CrearClienteComponent ],
+      imports: [HttpClientTestingModule, RouterTestingModule, CommonModule, FormsModule, ReactiveFormsModule],
+      providers: [ClienteService, HttpService],
+    })
+    .compileComponents();
+  });
+
 
   beforeEach(() => {
-    const injector = TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      providers: [ClienteService, HttpService]
-    });
-    httpMock = injector.inject(HttpTestingController);
-    service = TestBed.inject(ClienteService);
+    fixture = TestBed.createComponent(CrearClienteComponent);
+    componentCliente = fixture.componentInstance;
+    clienteService = TestBed.inject(ClienteService);
+    spyOn(clienteService, 'guardar').and.returnValue(of(null));
+
+    router = TestBed.inject(Router);
+    spyOn(router, 'navigate');
+    fixture.detectChanges();
+
+
   });
 
   it('should create', () => {
-    const crearCliente: ClienteService = TestBed.inject(ClienteService);
-    expect(crearCliente).toBeTruthy();
+    expect(componentCliente).toBeTruthy();
   });
 
-  fit('deberia crear un cliente', () => {
-    const dummyCliente = new Cliente('Sofia','Lemus','42485','s@gmail.com',1);
-    service.guardar(dummyCliente).subscribe((respuesta) => {
-      expect(respuesta).toBeTruthy();
-    });
-    const req = httpMock.expectOne(apiEndpointCliente);
-    expect(req.request.method).toBe('POST');
-    req.event(new HttpResponse<boolean>({body: true}));
+  fit('deberia crear un cliente', async () => {
+    componentCliente.clienteForm.controls.nombre.setValue('Catalina');
+    componentCliente.clienteForm.controls.apellido.setValue('Delgado');
+    componentCliente.clienteForm.controls.identificacion.setValue('123456');
+    componentCliente.clienteForm.controls.email.setValue('cd@gmail.com');
+    expect(componentCliente.clienteForm.valid).toBeTruthy();
+
+
   });
 });
