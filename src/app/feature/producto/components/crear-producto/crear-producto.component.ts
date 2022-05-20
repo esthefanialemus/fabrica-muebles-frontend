@@ -21,68 +21,68 @@ export class CrearProductoComponent implements OnInit {
     console.log(date.toISOString());
 
     this.construirFormularioProducto();
-    this.numeroPuesto=0;
-    this.tipoComedor=0;
+    this.numeroPuesto = 0;
+    this.tipoComedor = 0;
 
   }
 
-onChange() {
+  onChange() {
 
 
-  if(this.productoForm.value.tipoComedor=='Vidrio' && this.productoForm.value.numeroPuesto=='4 Puestos'  ){
-    this.productoForm.setValue({...this.productoForm.value,valor:400000});
+    if (this.productoForm.value.tipoComedor == 'Vidrio' && this.productoForm.value.numeroPuesto == '4 Puestos') {
+      this.productoForm.setValue({ ...this.productoForm.value, valor: 400000 });
+    }
+
+    if (this.productoForm.value.tipoComedor == 'Vidrio' && this.productoForm.value.numeroPuesto == '6 Puestos') {
+      this.productoForm.setValue({ ...this.productoForm.value, valor: 600000 });
+
+    }
+
+    if (this.productoForm.value.tipoComedor == 'Vidrio' && this.productoForm.value.numeroPuesto == '8 Puestos') {
+      this.productoForm.setValue({ ...this.productoForm.value, valor: 900000 });
+
+    }
+
+    if (this.productoForm.value.tipoComedor == 'Madera' && this.productoForm.value.numeroPuesto == '4 Puestos') {
+      this.productoForm.setValue({ ...this.productoForm.value, valor: 900000 });
+
+    }
+
+    if (this.productoForm.value.tipoComedor == 'Madera' && this.productoForm.value.numeroPuesto == '6 Puestos') {
+      this.productoForm.setValue({ ...this.productoForm.value, valor: 1200000 });
+
+    }
+
+    if (this.productoForm.value.tipoComedor == 'Madera' && this.productoForm.value.numeroPuesto == '8 Puestos') {
+      this.productoForm.setValue({ ...this.productoForm.value, valor: 2400000 });
+
+    }
+
+    if (this.productoForm.value.tipoComedor == 'Tapizado' && this.productoForm.value.numeroPuesto == '4 Puestos') {
+      this.productoForm.setValue({ ...this.productoForm.value, valor: 800000 });
+
+    }
+
+    if (this.productoForm.value.tipoComedor == 'Tapizado' && this.productoForm.value.numeroPuesto == '6 Puestos') {
+      this.productoForm.setValue({ ...this.productoForm.value, valor: 150000 });
+
+    }
+
+    if (this.productoForm.value.tipoComedor == 'Tapizado' && this.productoForm.value.numeroPuesto == '8 Puestos') {
+      this.productoForm.setValue({ ...this.productoForm.value, valor: 290000 });
+
+    }
+
+
+
   }
-
-  if(this.productoForm.value.tipoComedor=='Vidrio' && this.productoForm.value.numeroPuesto=='6 Puestos'  ){
-    this.productoForm.setValue({...this.productoForm.value,valor:600000});
-
-  }
-
-  if(this.productoForm.value.tipoComedor=='Vidrio' && this.productoForm.value.numeroPuesto=='8 Puestos'  ){
-    this.productoForm.setValue({...this.productoForm.value,valor:900000});
-
-  }
-
-  if(this.productoForm.value.tipoComedor=='Madera' && this.productoForm.value.numeroPuesto=='4 Puestos'  ){
-    this.productoForm.setValue({...this.productoForm.value,valor:900000});
-
-  }
-
-  if(this.productoForm.value.tipoComedor=='Madera' && this.productoForm.value.numeroPuesto=='6 Puestos'  ){
-    this.productoForm.setValue({...this.productoForm.value,valor:1200000});
-
-  }
-
-  if(this.productoForm.value.tipoComedor=='Madera' && this.productoForm.value.numeroPuesto=='8 Puestos'  ){
-    this.productoForm.setValue({...this.productoForm.value,valor:2400000});
-
-  }
-
-  if(this.productoForm.value.tipoComedor=='Tapizado' && this.productoForm.value.numeroPuesto=='4 Puestos'  ){
-    this.productoForm.setValue({...this.productoForm.value,valor:800000});
-
-  }
-
-  if(this.productoForm.value.tipoComedor=='Tapizado' && this.productoForm.value.numeroPuesto=='6 Puestos'  ){
-    this.productoForm.setValue({...this.productoForm.value,valor:150000});
-
-  }
-
-  if(this.productoForm.value.tipoComedor=='Tapizado' && this.productoForm.value.numeroPuesto=='8 Puestos'  ){
-    this.productoForm.setValue({...this.productoForm.value,valor:290000});
-
-  }
-
-
-
-}
 
 
 
   crear() {
-    this.productoServices.guardar(this.productoForm.value).subscribe(()=>{
+    this.productoServices.guardar(this.productoForm.value).subscribe(() => {
 
-     console.log(this.numeroPuesto);
+      console.log(this.numeroPuesto);
 
 
 

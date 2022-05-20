@@ -1,3 +1,4 @@
+
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 
@@ -48,14 +49,15 @@ describe('CrearProductoComponent', () => {
   });
 
   it('Registrando producto', () => {
-    expect(component.productoForm.valid).toBeFalsy();
-    component.productoForm.controls.id.setValue('001');
-    component.productoForm.controls.descripcion.setValue('Producto test');
-    expect(component.productoForm.valid).toBeTruthy();
 
+    component.productoForm.controls.numeroPuesto.setValue('4 Puestos');
+    component.productoForm.controls.tipoComedor.setValue('Vidrio');
+    component.productoForm.controls.valor.setValue(400000);
     component.crear();
+    expect(component.productoForm.valid).toBeTruthy();
 
     // Aca validamos el resultado esperado al enviar la petición
     // TODO adicionar expect
   });
 });
+

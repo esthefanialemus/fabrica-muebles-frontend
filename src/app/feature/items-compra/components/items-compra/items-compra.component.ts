@@ -43,8 +43,8 @@ export class ItemsCompraComponent implements OnInit {
   }
 
   private calcularTotal() {
-    this.productos.forEach(producto => {
-      this.totalPagar += producto.valor;
-    });
+   // this.productos.forEach(producto => {
+     // this.totalPagar += producto.valor;
+    //});
   }
 }

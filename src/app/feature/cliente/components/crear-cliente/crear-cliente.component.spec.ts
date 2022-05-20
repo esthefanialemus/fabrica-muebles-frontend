@@ -44,7 +44,7 @@ describe('CrearClienteComponent', () => {
     expect(componentCliente).toBeTruthy();
   });
 
-  fit('deberia crear un cliente', async () => {
+  it('deberia crear un cliente', async () => {
     componentCliente.clienteForm.controls.nombre.setValue('Catalina');
     componentCliente.clienteForm.controls.apellido.setValue('Delgado');
     componentCliente.clienteForm.controls.identificacion.setValue('123456');

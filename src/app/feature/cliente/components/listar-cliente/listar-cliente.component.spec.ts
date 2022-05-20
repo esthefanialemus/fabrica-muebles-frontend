@@ -27,7 +27,7 @@ describe('ListarClienteComponent', () => {
   });
 
 
-  fit('deberia listar un cliente', () => {
+  it('deberia listar un cliente', () => {
     service.consultar().subscribe((respuesta) => {
       expect(respuesta).toBeTruthy();
     });

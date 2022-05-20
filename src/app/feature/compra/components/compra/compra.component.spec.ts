@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
 describe('CompraComponent', () => {
   let httpMock: HttpTestingController;
   let service: CompraService;
-  const apiEndpointCompra = `${environment.endpoint}/cliente`;
+  const apiEndpointCompra = `${environment.endpoint}/compra`;
 
 
 

@@ -33,7 +33,7 @@ describe('CompraService', () => {
 
   it('Deberia listar compras', () => {
 
-    const listaCompras: Compra[]=[
+    const dummyCompras: Compra[]=[
       {
         idCliente:1,
         total:1000000,
@@ -47,12 +47,12 @@ describe('CompraService', () => {
 
     service.consultar().subscribe(compra =>{
       expect(compra.length).toBe(1);
-      expect(compra).toEqual(listaCompras);
+      expect(compra).toEqual(dummyCompras);
     })
 
     const req = httpMock.expectOne(apiEndpointCompras);
     expect(req.request.method).toBe('GET');
-    req.flush(listaCompras);
+    req.flush(dummyCompras);
   });
 
   it('deberia eliminar una compra', () => {

@@ -29,7 +29,7 @@ describe('ListarProductoComponent', () => {
     expect(listarCliente).toBeTruthy();
   });
 
-  fit('deberia listar productos', () => {
+  it('deberia listar productos', () => {
     service.consultar().subscribe((respuesta) => {
       expect(respuesta).toBeTruthy();
     });

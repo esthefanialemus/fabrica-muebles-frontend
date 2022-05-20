@@ -1,3 +1,5 @@
+import { HttpService } from './../../../../core/services/http.service';
+import { ProductoService } from './../../shared/service/producto.service';
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProductoComponent } from './producto.component';
@@ -17,6 +19,11 @@ describe('ProductoComponent', () => {
         HttpClientModule,
         RouterTestingModule
       ],
+      providers:[
+        ProductoService,
+        HttpService
+
+      ]
     })
     .compileComponents();
   }));
@@ -24,10 +31,13 @@ describe('ProductoComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ProductoComponent);
     component = fixture.componentInstance;
+    TestBed.inject(ProductoService);
     fixture.detectChanges();
+
   });
 
   it('should create', () => {
+     TestBed.inject(ProductoService);
     expect(component).toBeTruthy();
   });
 });

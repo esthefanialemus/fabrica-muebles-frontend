@@ -1,3 +1,4 @@
+/**
 import { Compra } from 'src/app/feature/compra/shared/model/compra';
 import { of } from 'rxjs';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -11,7 +12,7 @@ import { HttpService } from 'src/app/core/services/http.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
-describe('CrearCompraComponent', () => {
+fdescribe('CrearCompraComponent', () => {
   let service: CompraService;
   let component : CrearCompraComponent;
   let fixture: ComponentFixture<CrearCompraComponent>;
@@ -74,3 +75,4 @@ describe('CrearCompraComponent', () => {
   })
 });
 
+*/
