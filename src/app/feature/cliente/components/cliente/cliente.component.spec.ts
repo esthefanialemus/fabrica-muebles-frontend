@@ -27,7 +27,7 @@ describe('ClienteComponent', () => {
     expect(crearCliente).toBeTruthy();
   });
 
-  fit('deberia crear un cliente', () => {
+  it('deberia crear un cliente', () => {
     const dummyCliente = new Cliente('Sofia','Lemus','42485','s@gmail.com',1);
     service.guardar(dummyCliente).subscribe((respuesta) => {
       expect(respuesta).toBeTruthy();

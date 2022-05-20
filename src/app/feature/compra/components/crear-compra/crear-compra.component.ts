@@ -12,7 +12,7 @@ import { ProductoService } from '@producto/shared/service/producto.service';
   templateUrl: './crear-compra.component.html',
   styleUrls: ['./crear-compra.component.css']
 })
-export class CrearProductoComponent implements OnInit {
+export class CrearCompraComponent implements OnInit {
 
 
   compraForm: FormGroup;

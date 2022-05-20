@@ -1,25 +1,39 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { CompraComponent } from './compra.component';
+import { Compra } from 'src/app/feature/compra/shared/model/compra';
+import { HttpService } from '@core-service/http.service';
+import { CompraService } from 'src/app/feature/compra/shared/service/compra.service';
+import { HttpTestingController, HttpClientTestingModule } from '@angular/common/http/testing';
+import {  HttpResponse } from '@angular/common/http';
+import {  TestBed } from '@angular/core/testing';
+import { environment } from 'src/environments/environment';
 
 describe('CompraComponent', () => {
-  let component: CompraComponent;
-  let fixture: ComponentFixture<CompraComponent>;
+  let httpMock: HttpTestingController;
+  let service: CompraService;
+  const apiEndpointCompra = `${environment.endpoint}/cliente`;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ CompraComponent ]
-    })
-    .compileComponents();
-  });
+
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CompraComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    const injector = TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      providers: [CompraService, HttpService]
+    });
+    httpMock = injector.inject(HttpTestingController);
+    service = TestBed.inject(CompraService);
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    const crearCompra: CompraService = TestBed.inject(CompraService);
+    expect(crearCompra).toBeTruthy();
+  });
+
+  it('deberia crear una compra', () => {
+    const dummyCompra = new Compra(1,1300000,'2022-06-13 10:22:33','2022-06-16 10:22:33','2022-06-20 10:22:33',1);
+    service.guardar(dummyCompra).subscribe((respuesta) => {
+      expect(respuesta).toBeTruthy();
+    });
+    const req = httpMock.expectOne(apiEndpointCompra);
+    expect(req.request.method).toBe('POST');
+    req.event(new HttpResponse<boolean>({body: true}));
   });
 });
