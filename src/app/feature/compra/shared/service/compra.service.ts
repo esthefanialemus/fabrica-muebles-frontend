@@ -20,7 +20,7 @@ export class CompraService {
    }
 
    public eliminar(compra: Compra) {
-     return this.http.doDelete<boolean>(`${environment.endpoint}/producto/${compra.id}`,
+     return this.http.doDelete<boolean>(`${environment.endpoint}/compra/${compra.id}`,
                                                   this.http.optsName('eliminar compras'));
    }
 }

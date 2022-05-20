@@ -1,3 +1,4 @@
+import { Compra } from 'src/app/feature/compra/shared/model/compra';
 import { of } from 'rxjs';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Router } from '@angular/router';
@@ -45,14 +46,31 @@ describe('CrearCompraComponent', () => {
   });
 
 
-  it('deberia crear una compra', async () => {
+  it('deberia crear el objeto compra',  () => {
+
+    const compra : Compra = new Compra(1,1000000,undefined,undefined,undefined,1);
     component.compraForm.controls.numeroPuesto.setValue('4 Puestos');
     component.compraForm.controls.tipoComedor.setValue('Vidrio');
 
-    expect( component.compraForm.controls.valid).toBeTruthy();
+    const result = component['crearCompra']();
 
-
+    expect(compra).toEqual(result);
 
   });
+
+  it('deberia guardar una compra', async () => {
+    component.compraForm.controls.numeroPuesto.setValue('4 Puestos');
+    component.compraForm.controls.tipoComedor.setValue('Vidrio');
+
+    expect( component.compraForm.valid).toBeTruthy();
+
+    component.crear();
+
+  });
+
+  it('deberia hacer submit pero el formulario es invalido', ()=>{
+    component.crear();
+    expect(component.compraForm.invalid).toBeTruthy();
+  })
 });
 
