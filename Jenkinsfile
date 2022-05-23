@@ -11,7 +11,8 @@ pipeline {
 
 
   tools {
-    jdk 'JDK8_Centos'
+    jdk 'JDK8_Centos',
+    nodejs 'NodeJS12'
   }
 
 
