@@ -1,39 +1,37 @@
-import { Cliente } from './../../shared/model/cliente';
 import { HttpService } from '@core-service/http.service';
 import { ClienteService } from './../../shared/service/cliente.service';
-import { HttpTestingController, HttpClientTestingModule } from '@angular/common/http/testing';
-import {  TestBed } from '@angular/core/testing';
-import { environment } from 'src/environments/environment';
-import { HttpResponse } from '@angular/common/http';
-
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+import { ClienteComponent } from './cliente.component';
+import { TestBed, ComponentFixture, waitForAsync } from '@angular/core/testing';
 
 describe('ClienteComponent', () => {
-  let httpMock: HttpTestingController;
-  let service: ClienteService;
-  const apiEndpointCliente = `${environment.endpoint}/cliente`;
 
+  let component: ClienteComponent;
+  let fixture: ComponentFixture<ClienteComponent>;
+
+  beforeEach(waitForAsync( () => {
+     TestBed.configureTestingModule({
+      declarations: [ ClienteComponent ],
+      imports:[CommonModule,HttpClientModule,RouterTestingModule],
+      providers:[
+        ClienteService,
+        HttpService
+
+      ]
+    })
+    .compileComponents();
+  }));
 
   beforeEach(() => {
-    const injector = TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      providers: [ClienteService, HttpService]
-    });
-    httpMock = injector.inject(HttpTestingController);
-    service = TestBed.inject(ClienteService);
+    fixture = TestBed.createComponent(ClienteComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
   });
+
 
   it('should create', () => {
-    const crearCliente: ClienteService = TestBed.inject(ClienteService);
-    expect(crearCliente).toBeTruthy();
-  });
-
-  it('deberia crear un cliente', () => {
-    const dummyCliente = new Cliente('Sofia','Lemus','42485','s@gmail.com',1);
-    service.guardar(dummyCliente).subscribe((respuesta) => {
-      expect(respuesta).toBeTruthy();
-    });
-    const req = httpMock.expectOne(apiEndpointCliente);
-    expect(req.request.method).toBe('POST');
-    req.event(new HttpResponse<boolean>({body: true}));
+    expect(component).toBeTruthy();
   });
 });

@@ -59,5 +59,105 @@ describe('CrearProductoComponent', () => {
     // Aca validamos el resultado esperado al enviar la petición
     // TODO adicionar expect
   });
+
+  it('onChange conditional vidrio 4 puestos', () => {
+
+    component.productoForm.controls.numeroPuesto.setValue('4 Puestos');
+    component.productoForm.controls.tipoComedor.setValue('Vidrio');
+    component.onChange();
+    expect(component.productoForm.value.valor).toEqual(400000);
+
+    // Aca validamos el resultado esperado al enviar la petición
+    // TODO adicionar expect
+  });
+
+  it('onChange conditional vidrio 6 puestos', () => {
+
+    component.productoForm.controls.numeroPuesto.setValue('6 Puestos');
+    component.productoForm.controls.tipoComedor.setValue('Vidrio');
+    component.onChange();
+    expect(component.productoForm.value.valor).toEqual(600000);
+
+    // Aca validamos el resultado esperado al enviar la petición
+    // TODO adicionar expect
+  });
+
+  it('onChange conditional vidrio 8 puestos', () => {
+
+    component.productoForm.controls.numeroPuesto.setValue('8 Puestos');
+    component.productoForm.controls.tipoComedor.setValue('Vidrio');
+    component.onChange();
+    expect(component.productoForm.value.valor).toEqual(900000);
+
+    // Aca validamos el resultado esperado al enviar la petición
+    // TODO adicionar expect
+  });
+
+  it('onChange conditional Madera 4 puestos', () => {
+
+    component.productoForm.controls.numeroPuesto.setValue('4 Puestos');
+    component.productoForm.controls.tipoComedor.setValue('Madera');
+    component.onChange();
+    expect(component.productoForm.value.valor).toEqual(900000);
+
+    // Aca validamos el resultado esperado al enviar la petición
+    // TODO adicionar expect
+  });
+
+  it('onChange conditional Madera 6 puestos', () => {
+
+    component.productoForm.controls.numeroPuesto.setValue('6 Puestos');
+    component.productoForm.controls.tipoComedor.setValue('Madera');
+    component.onChange();
+    expect(component.productoForm.value.valor).toEqual(1200000);
+
+    // Aca validamos el resultado esperado al enviar la petición
+    // TODO adicionar expect
+  });
+
+  it('onChange conditional Madera 8 puestos', () => {
+
+    component.productoForm.controls.numeroPuesto.setValue('8 Puestos');
+    component.productoForm.controls.tipoComedor.setValue('Madera');
+    component.onChange();
+    expect(component.productoForm.value.valor).toEqual(2400000);
+
+    // Aca validamos el resultado esperado al enviar la petición
+    // TODO adicionar expect
+  });
+
+  it('onChange conditional Tapizado 4 puestos', () => {
+
+    component.productoForm.controls.numeroPuesto.setValue('4 Puestos');
+    component.productoForm.controls.tipoComedor.setValue('Tapizado');
+    component.onChange();
+    expect(component.productoForm.value.valor).toEqual(800000);
+
+    // Aca validamos el resultado esperado al enviar la petición
+    // TODO adicionar expect
+  });
+
+
+  it('onChange conditional Tapizado 6 puestos', () => {
+
+    component.productoForm.controls.numeroPuesto.setValue('6 Puestos');
+    component.productoForm.controls.tipoComedor.setValue('Tapizado');
+    component.onChange();
+    expect(component.productoForm.value.valor).toEqual(150000);
+
+    // Aca validamos el resultado esperado al enviar la petición
+    // TODO adicionar expect
+  });
+
+  it('onChange conditional Tapizado 8 puestos', () => {
+
+    component.productoForm.controls.numeroPuesto.setValue('8 Puestos');
+    component.productoForm.controls.tipoComedor.setValue('Tapizado');
+    component.onChange();
+    expect(component.productoForm.value.valor).toEqual(290000);
+
+    // Aca validamos el resultado esperado al enviar la petición
+    // TODO adicionar expect
+  });
 });
 

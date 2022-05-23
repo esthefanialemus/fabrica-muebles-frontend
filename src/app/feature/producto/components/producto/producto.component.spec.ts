@@ -31,8 +31,8 @@ describe('ProductoComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ProductoComponent);
     component = fixture.componentInstance;
-    TestBed.inject(ProductoService);
     fixture.detectChanges();
+
 
   });
 
