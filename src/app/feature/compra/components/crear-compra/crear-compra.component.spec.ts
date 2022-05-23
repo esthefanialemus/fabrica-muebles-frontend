@@ -1,5 +1,4 @@
-/**
-import { Compra } from 'src/app/feature/compra/shared/model/compra';
+import { ProductoService } from './../../../producto/shared/service/producto.service';
 import { of } from 'rxjs';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Router } from '@angular/router';
@@ -12,7 +11,7 @@ import { HttpService } from 'src/app/core/services/http.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
-fdescribe('CrearCompraComponent', () => {
+describe('CrearCompraComponent', () => {
   let service: CompraService;
   let component : CrearCompraComponent;
   let fixture: ComponentFixture<CrearCompraComponent>;
@@ -22,7 +21,7 @@ fdescribe('CrearCompraComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ CrearCompraComponent ],
       imports: [HttpClientTestingModule, RouterTestingModule, CommonModule, FormsModule, ReactiveFormsModule],
-      providers: [CompraService, HttpService],
+      providers: [CompraService, HttpService,ProductoService],
 
     })
     .compileComponents();
@@ -47,32 +46,6 @@ fdescribe('CrearCompraComponent', () => {
   });
 
 
-  it('deberia crear el objeto compra',  () => {
 
-    const compra : Compra = new Compra(1,1000000,undefined,undefined,undefined,1);
-    component.compraForm.controls.numeroPuesto.setValue('4 Puestos');
-    component.compraForm.controls.tipoComedor.setValue('Vidrio');
-
-    const result = component['crearCompra']();
-
-    expect(compra).toEqual(result);
-
-  });
-
-  it('deberia guardar una compra', async () => {
-    component.compraForm.controls.numeroPuesto.setValue('4 Puestos');
-    component.compraForm.controls.tipoComedor.setValue('Vidrio');
-
-    expect( component.compraForm.valid).toBeTruthy();
-
-    component.crear();
-
-  });
-
-  it('deberia hacer submit pero el formulario es invalido', ()=>{
-    component.crear();
-    expect(component.compraForm.invalid).toBeTruthy();
-  })
 });
 
-*/
